@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Vision Sites</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital@0;1&family=Poppins&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <header>
+        <div class="interface">
+            <div class="logo">
+                <a href="#"><img class="foto-log" src="WhatsApp Image 2024-06-06 at 13.19.00.jpeg" alt="logo"></a>
+            </div>
+            <div class="btn-contato" style="position: relative;">
+                <button id="btnAbrirFormulario">Contato</button>
+                <!-- Formulário de Contato -->
+                <section id="formularioContato" class="interface" style="display: none; position: absolute; top: 0; right: 0; background: white; padding: 20px;">
+                    <button id="btnFecharFormulario"><i>sair</i></button><br>
+                    <h2>Formulário de Contato:</h2>
+                    <form target="_self" action="https://formsubmit.co/.com" method="POST">
+                        <label for="nome">Nome:</label><br>
+                        <input type="text" id="nome" name="name" required><br>
+                        <label for="email">Email:</label><br>
+                        <input type="email" id="email" name="email" required><br>
+                        <label for="mensagem">Mensagem:</label><br>
+                        <textarea id="mensagem" name="message" rows="5" required></textarea><br>
+                        <button class="enviar-bt" type="submit">Enviar</button>
+                    </form>
+                    
+                    
+                </section>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="topo-do-site">
+            <div class="interface">
+                <div class="flex">
+                    <div class="txt-topo-site">
+                        <h1 style="color: white;"><span>Quantas vendas</span> seu negócio perde por não estar bem posicionado na internet?</h1>
+                        <p style="font-size: 20px;">Criatividade e inovação andam lado a lado. solicite agora mesmo um orçamento de um projeto exclusivo para sua empresa e alavanque seu negócio.</p>
+                    </div>
+                    <div class="img-topo-site">
+                        <img src="https://itforum.com.br/wp-content/uploads/2019/01/programacao_1060094186-2.jpg" alt="img-2">
+                    </div>
+                </div>
+            </div>
+        </section>
+       
+
+
+        <section class="especialidades">
+            <div class="interface">
+                <h2 class="titulo">Nossos projetos</span></h2>
+                
+                <div class="especialidades-box" style="color: white; text-align: center;">
+                    <i class="bi bi-cup-straw"></i>
+                        <h3>Cardápios online</h3>
+                        <p>
+                            Um cardápio online onde os clientes podem visualizar os produtos do seu restaurante e, em seguida, clicar em um botão de WhatsApp que os redirecionará para uma conversa com a loja para realizar o pedido <span style="color: red; font-size: 20px;">*Designer ilustrativo cada projeto segue o solicitado pelo cliente*.</span> </p>
+                            <br>
+                            <img style="max-width: 250px; margin: auto;" src="WhatsApp Image 2024-05-21 at 20.58.18.jpeg" alt="">
+
+                    </div>
+
+
+                    <div class="flex">
+                        <div class="especialidades-box" style="color: white;">
+                            <i class="bi bi-code-square"></i>
+                            <h3>Web sites institucionais</h3>
+                            <p>Sites criados para divulgar sua empresa independentemente da área de atuação
+                                <span style="color: red; font-size: 20px;">
+                                    *Designer ilustrativo: cada projeto segue o solicitado pelo cliente*.
+                                </span>
+                            </p>
+                            <div style="display: flex; justify-content: center; margin-top: 20px;">
+                                <img style="height: 400px;" src="WhatsApp Image 2024-05-21 at 20.58.29.jpeg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="especialidades-box" style="color: white;">
+                        <i class="bi bi-back"></i>
+                        <h3>Landing pages</h3>
+                        <p></p>
+                        <img style="max-width: 300px;" src="https://anacristibeier.com.br/wp-content/uploads/2024/03/Landing-Page-Mapa-do-Ecommerce-1.webp" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer>
+        <p>&copy; 2024 Digital Vision Sites. Todos os direitos reservados.</p>
+    </footer>
+    
+
+
+
+    <a href="https://wa.me/5551992042692?text=" class="whatsapp-float" target="_blank">
+        <img class="whatsapp-icon" src="watss.jpg" alt="WhatsApp">
+    </a>
+
+
+
+
+
+    <script>
+        document.getElementById("btnAbrirFormulario").addEventListener("click", function() {
+            document.getElementById("formularioContato").style.display = "block";
+        });
+
+        document.getElementById("btnFecharFormulario").addEventListener("click", function() {
+            document.getElementById("formularioContato").style.display = "none";
+        });
+
+        document.getElementById("contatoForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evita o comportamento padrão de envio do formulário
+
+            var formData = new FormData(this);
+
+            fetch('processar_formulario.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert("Enviado com sucesso " + data); 
+                // Limpa os campos do formulário
+                document.getElementById("contatoForm").reset();
+                document.getElementById("formularioContato").style.display = "none";
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
